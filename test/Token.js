@@ -13,20 +13,26 @@ describe("Token", () => {
 		token = await Token.deploy('XeeJay Token', 'XEEJ', 1000000)
 	})
 
-	it("has correct name", async() => {
-		expect(await token.name()).to.equal("XeeJay Token") 
+	describe('Deployment' , () => {
+		const name = "XeeJay Token";
+		const symbol = "XEEJ";
+		const decimals = "18";
+		const totalSupply = tokens('1000000');
+
+		it("has correct name", async() => {
+		expect(await token.name()).to.equal(name) 
 	})
 
 	it("has correct symbol", async() => {
-		expect(await token.symbol()).to.equal("XEEJ") 
+		expect(await token.symbol()).to.equal(symbol) 
 	})
 
 	it("has correct decimals", async() => {
-		expect(await token.decimals()).to.equal("18") 
+		expect(await token.decimals()).to.equal(decimals) 
 	})
 
 	it("has correct supply", async() => {
-		const value = tokens('1000000')
-		expect(await token.totalSupply()).to.equal(value) 
+		expect(await token.totalSupply()).to.equal(totalSupply) 
+	})
 	})
 }) 
